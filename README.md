@@ -20,3 +20,13 @@ SimpleClient client = new SimpleClient("localhost", 12345, "My name");
 ```
 Wow, here we have a bunch of parameters. The first one is obvisouly the host. Enter an IP address if your SimpleServer you have created is on a remote server. The second parameter is the port which must be the same as you used in your SimpleServer constructor.
 The third parameter is the name of the client. If you later on would like to communicate between clients over the server, this is the way to identify the clients. The server will not accept a client if the name is already taken.
+
+
+Now we of course would like to send tasks to the server. Using this API you will send "Packets". Every packet must implement IPacket. An example for this is the EchoPacket in the me.mylogo.servercom.packets package.
+
+######You can send a packet like this:
+```java
+SimpleClient client = new SimpleClient("localhost", 12345, "My name");
+EchoPacket echo = new EchoPacket("I am being printed serversidely!");
+client.sendPacket(echo);
+```
