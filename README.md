@@ -30,3 +30,13 @@ SimpleClient client = new SimpleClient("localhost", 12345, "My name");
 EchoPacket echo = new EchoPacket("I am being printed serversidely!");
 client.sendPacket(echo);
 ```
+
+Cool, we have just sent a packet.. which is not being handled. To handle a packet you must first create a handler (on either client or server side). A handler must implement the IPacketHandler interface and be registered.
+You can see an example of the EchoHandler inside of the me.mylogo.servercom.handler package.
+
+######How to register a PacketHandler
+```java
+SimpleClient client = new SimpleClient("localhost", 12345, "My name");
+MyCustomHandler handler = new MyCustomHandler(); //This is a class which implementsw IPacketHandler
+client.getPacketHandler().addPacketHandler(handler);
+```
